@@ -1,0 +1,83 @@
+RewriteEngine On
+
+# Python API'yi PHP URL'leri ile kullanma - 45 MODÜL
+RewriteRule ^api/ip\.php$ /api/v1/ip [L,QSA]
+RewriteRule ^api/phone\.php$ /api/v1/phone [L,QSA]
+RewriteRule ^api/email\.php$ /api/v1/email [L,QSA]
+RewriteRule ^api/username\.php$ /api/v1/username [L,QSA]
+RewriteRule ^api/yandex\.php$ /api/v1/yandex [L,QSA]
+RewriteRule ^api/social\.php$ /api/v1/social [L,QSA]
+RewriteRule ^api/vpn\.php$ /api/v1/vpn [L,QSA]
+RewriteRule ^api/breach\.php$ /api/v1/breach [L,QSA]
+RewriteRule ^api/whois\.php$ /api/v1/whois [L,QSA]
+RewriteRule ^api/metadata\.php$ /api/v1/metadata [L,QSA]
+RewriteRule ^api/reverseimage\.php$ /api/v1/reverseimage [L,QSA]
+RewriteRule ^api/script\.php$ /api/v1/script [L,QSA]
+RewriteRule ^api/bin\.php$ /api/v1/bin [L,QSA]
+RewriteRule ^api/crypto\.php$ /api/v1/crypto [L,QSA]
+RewriteRule ^api/imei\.php$ /api/v1/imei [L,QSA]
+RewriteRule ^api/mac\.php$ /api/v1/mac [L,QSA]
+RewriteRule ^api/domainhistory\.php$ /api/v1/domainhistory [L,QSA]
+RewriteRule ^api/ssl\.php$ /api/v1/ssl [L,QSA]
+RewriteRule ^api/browser\.php$ /api/v1/browser [L,QSA]
+RewriteRule ^api/darknet\.php$ /api/v1/darknet [L,QSA]
+RewriteRule ^api/telegram\.php$ /api/v1/telegram [L,QSA]
+RewriteRule ^api/instagram\.php$ /api/v1/instagram [L,QSA]
+RewriteRule ^api/vk\.php$ /api/v1/vk [L,QSA]
+RewriteRule ^api/whatsapp\.php$ /api/v1/whatsapp [L,QSA]
+RewriteRule ^api/bitcoin\.php$ /api/v1/bitcoin [L,QSA]
+RewriteRule ^api/ethereum\.php$ /api/v1/ethereum [L,QSA]
+RewriteRule ^api/tax\.php$ /api/v1/tax [L,QSA]
+RewriteRule ^api/court\.php$ /api/v1/court [L,QSA]
+RewriteRule ^api/patent\.php$ /api/v1/patent [L,QSA]
+RewriteRule ^api/trademark\.php$ /api/v1/trademark [L,QSA]
+RewriteRule ^api/flight\.php$ /api/v1/flight [L,QSA]
+RewriteRule ^api/hotel\.php$ /api/v1/hotel [L,QSA]
+RewriteRule ^api/rental\.php$ /api/v1/rental [L,QSA]
+RewriteRule ^api/carplate\.php$ /api/v1/carplate [L,QSA]
+RewriteRule ^api/driverlicense\.php$ /api/v1/driverlicense [L,QSA]
+RewriteRule ^api/passport\.php$ /api/v1/passport [L,QSA]
+RewriteRule ^api/medical\.php$ /api/v1/medical [L,QSA]
+RewriteRule ^api/education\.php$ /api/v1/education [L,QSA]
+RewriteRule ^api/workhistory\.php$ /api/v1/workhistory [L,QSA]
+RewriteRule ^api/credithistory\.php$ /api/v1/credithistory [L,QSA]
+RewriteRule ^api/realestate\.php$ /api/v1/realestate [L,QSA]
+RewriteRule ^api/landplot\.php$ /api/v1/landplot [L,QSA]
+RewriteRule ^api/corporate\.php$ /api/v1/corporate [L,QSA]
+RewriteRule ^api/marine\.php$ /api/v1/marine [L,QSA]
+RewriteRule ^api/aircraft\.php$ /api/v1/aircraft [L,QSA]
+
+# Modüller listesi
+RewriteRule ^api/modules\.php$ /api/v1/modules [L]
+
+# Generic fallback (yedek kural)
+RewriteRule ^api/([a-z0-9]+)\.php$ /api/v1/$1 [L,QSA]
+
+# Health check
+RewriteRule ^health\.php$ /health [L]
+
+# Ana sayfa
+RewriteRule ^index\.php$ / [L]
+RewriteRule ^home\.php$ / [L]
+RewriteRule ^default\.php$ / [L]
+
+# API ana sayfası
+RewriteRule ^api/index\.php$ / [L]
+RewriteRule ^api/\.php$ / [L]
+
+# CORS headers
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+# Security headers
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set X-XSS-Protection "1; mode=block"
+
+# Cache control for API
+<FilesMatch "\.(php)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</FilesMatch>
